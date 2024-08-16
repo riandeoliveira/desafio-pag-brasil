@@ -14,7 +14,6 @@ type UserForm = {
 };
 
 const { toast } = useToast();
-
 const userStore = useUserStore();
 
 const { defineField, errors, handleSubmit } = useForm({
@@ -27,28 +26,29 @@ const [password, passwordAttrs] = defineField("password");
 const onSubmit = handleSubmit((values) => {
   const formValues = values as UserForm;
 
+  let userFound = false;
+
   users.forEach((user) => {
     const decryptedPassword = decryptPassword(user.password);
-
     const isValidUsername = formValues.username === user.username;
     const isValidPassword = formValues.password === decryptedPassword;
 
     if (isValidUsername && isValidPassword) {
-      userStore.setIsValidUser(true);
-    } else {
-      userStore.setIsValidUser(false);
-
-      alert(
-        "Erro ao buscar usuários! O nome de usuário e/ou senha não existem."
-      );
-
-      // toast({
-      //   variant: "destructive",
-      //   title: "Erro ao buscar usuários!",
-      //   description: "O nome de usuário e/ou senha não existem.",
-      // });
+      userFound = true;
     }
   });
+
+  if (userFound) {
+    userStore.setIsValidUser(true);
+  } else {
+    toast({
+      variant: "destructive",
+      title: "Erro ao buscar usuários!",
+      description: "O nome de usuário e/ou senha não existem.",
+    });
+
+    userStore.setIsValidUser(false);
+  }
 });
 </script>
 

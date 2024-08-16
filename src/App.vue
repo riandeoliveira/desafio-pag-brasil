@@ -15,7 +15,7 @@ const userStore = useUserStore();
       <Header />
       <main class="flex flex-col gap-12">
         <UserForm />
-        <UsersTable v-if="!userStore.isValidUser" />
+        <UsersTable v-if="userStore.isValidUser" />
       </main>
       <Footer />
     </div>
