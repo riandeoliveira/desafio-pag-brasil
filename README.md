@@ -4,8 +4,9 @@
 
 ## 💻 Como usar
 
-1. Na raiz do projeto, instale as dependências necessários com o comando: `npm install`.
-2. Em seguida, execute a aplicação com o comando `npm run dev`.
+1. Clone este repositório com o comando: `git clone https://github.com/riandeoliveira/desafio-pag-brasil`.
+2. Na raiz do projeto, instale as dependências necessárias com o comando: `npm install`.
+3. Em seguida, execute a aplicação com o comando `npm run dev`.
 
 ## ℹ️ Observação
 
